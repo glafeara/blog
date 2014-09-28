@@ -15,13 +15,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-  	@article = current_user.articles.create(article_params)
+    @article = current_user.articles.create(article_params)
     get_categories
-  	if @article.errors.empty?
-  	  redirect_to @article
-  	else
-  	  render 'new'
-  	end
+    if @article.errors.empty?
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -33,19 +33,19 @@ class ArticlesController < ApplicationController
     set_article.update(article_params)
     get_categories
     if @article.errors.empty?
-  	  redirect_to @article
+      redirect_to @article
     else
       render 'edit'
     end
   end
 
   def show
-  	set_article
+    set_article
   end
 
   def destroy
-  	set_article.destroy
-  	redirect_to articles_path
+    set_article.destroy
+    redirect_to articles_path
   end
 
   private
