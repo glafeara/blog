@@ -1,0 +1,17 @@
+h1 Редактирование категории
+
+= form_for @category, html: { class: "form-horizontal", role: "form" } do |f|
+
+  - if @category.errors.any?
+    div.alert.alert-danger role="alert"
+      - @category.errors.full_messages.each do |msg|
+        p = msg
+        
+  div.form-group
+    div.col-sm-5
+      = f.label 'Имя категории:'
+      = f.text_field :category, class: "form-control"
+
+  div.form-group 
+    div.col-sm-10
+      = f.submit "Сохранить", class: "btn btn-default"

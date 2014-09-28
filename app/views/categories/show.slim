@@ -1,0 +1,7 @@
+h1 = @category.category
+
+- @category.articles.each do |art|
+  h2 = art.header
+  p = raw art.description
+  p
+    =link_to 'Читать далее', article_path(art), class: "btn btn-primary btn-sm"

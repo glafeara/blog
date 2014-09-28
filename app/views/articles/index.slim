@@ -1,0 +1,37 @@
+h1 Все статьи
+table.table
+  thead
+    tr
+      th
+        strong
+          | Заголовок
+      th
+        strong
+          | Кратокое описание
+      th
+        strong
+          | Основной текст
+      th
+        strong
+          | ID категории
+      th
+        strong
+          | ID пользователя
+      th
+          |
+      th
+          |
+      th
+  - @articles.each do |a|
+    tbody
+      tr
+        td = a.header
+        td = truncate(a.description, length: 50)
+        td = truncate(a.article, length: 150)
+        td = a.category_id
+        td = a.user_id
+        td = link_to 'Показать', article_path(a), class: "btn btn-primary btn-xs"
+        td = link_to 'Править', edit_article_path(a), class: "btn btn-primary btn-xs"
+        td = link_to 'Удалить', article_path(a), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: 'Are you sure?' }
+br        
+p = link_to 'Создать статью', new_article_path, class: "btn btn-primary"

@@ -1,0 +1,24 @@
+h1 Профиль
+- if flash[:alert]
+  div.alert.alert-danger role='alert'
+    p = flash[:alert]
+
+table.table
+  thaed
+    tr
+      th
+        | ID
+      th
+        | Логин
+      th
+        | Кол-во статей
+      th
+
+      th
+    tbody
+      tr
+  	    td = @user.id
+  	    td = @user.email
+  	    td = @user.articles.count
+  	    td = link_to 'Написать статью', new_article_path
+  	    td = link_to 'Редактировать профль', edit_user_path(current_user)

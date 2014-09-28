@@ -1,0 +1,29 @@
+h1 Все категории
+table.table
+  thead
+    tr
+      th
+        strong
+          | ID
+      th
+        strong
+          | Категория
+      th
+          | Статей
+      th
+
+      th
+
+      th
+
+  - @categories.each do |c|
+    tbody
+      tr
+        td = c.id
+        td = c.category
+        td = c.articles.count
+        td = link_to 'Показать', category_path(c)
+        td = link_to 'Править', edit_category_path(c)
+        td = link_to 'Удалить', category_path(c), method: :delete, data: { confirm: 'Are you sure?' }
+br
+p = link_to 'Создать категорию', new_category_path

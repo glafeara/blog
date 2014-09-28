@@ -1,0 +1,22 @@
+h1 Вход
+
+= form_for(:session, url: sessions_path, html: { class: "form-horizontal", role: "form" }) do |f|
+
+  div.col-sm-10.form-group
+    - unless flash[:alert].nil?
+      p.alert.alert-danger role='alert' = flash[:alert]
+
+  div.form-group
+    div.col-sm-5
+      = f.label 'E-mail:'
+      = f.text_field :email, class: "form-control"
+
+  div.form-group
+    div.col-sm-5
+      = f.label 'Пароль:'
+      = f.password_field :password, class: "form-control"
+
+
+  div.form-group 
+    div.col-sm-10
+      = f.submit 'Войти', class: "btn btn-default"

@@ -1,0 +1,31 @@
+h1 Новая статья
+
+- if @article.errors.any?
+  div.alert.alert-danger role="alert"
+    - @article.errors.full_messages.each do |msg|
+      p = msg
+
+= form_for @article, html: { class: "form-horizontal", role: "form", multipart: "true" } do |f|
+  div.form-group
+    div.col-sm-5
+      = f.label 'Заголовок'
+      = f.text_field :header, class: "form-control"
+
+  div.form-group
+    div.col-sm-7
+      = f.label 'Краткое описание'
+      = f.text_area :description, class: "form-control", cols: 45, rows: 5
+
+  div.form-group
+    div.col-sm-7
+      = f.label 'Основной текст'
+      = f.text_area :article, class: "form-control", cols: 60, rows: 5
+
+  div.form-group
+    div.col-sm-3
+      = f.label 'Категория'
+      = select_tag 'article[category_id]', options_for_select(@all_categories.collect { |c| [c.category, c.id] }), class: "form-control"
+ 
+  div.form-group 
+    div.col-sm-10
+      = f.submit "Создать", class: "btn btn-default"

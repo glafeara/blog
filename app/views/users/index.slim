@@ -1,0 +1,47 @@
+h1 Пользователи
+table.table
+  thaed
+    tr
+      th
+        | ID
+      th
+        | E-mail
+      th
+        | Пароль
+      th
+        | Статей
+      th
+        | Админ?
+      th
+        | Проверен?
+      th
+
+      th
+
+      th
+
+      th
+
+      th
+  - @users.each do |u|
+    tbody
+      tr
+  	    td = u.id
+  	    td = u.email
+  	    td = truncate(u.password_digest)
+  	    td = u.articles.count
+        td = u.isadmin
+        td = u.checked
+        td = link_to 'Показать', user_path(u), class: "btn btn-primary btn-xs"
+        td = link_to 'Править', edit_user_path(u), class: "btn btn-primary btn-xs"
+        td = link_to 'Удалить', user_path(u), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: 'Are you sure?' }
+        - if u.isadmin
+          td = link_to 'Забрать админа', activeadmin_user_path(u), class: "btn btn-primary btn-xs"
+        - else
+          td = link_to 'Дать админа', activeadmin_user_path(u), class: "btn btn-primary btn-xs"
+        - if u.checked
+          td = link_to 'Отмена проверки', checked_user_path(u), class: "btn btn-primary btn-xs"
+        - else
+          td = link_to 'Проверен', checked_user_path(u), class: "btn btn-primary btn-xs"
+
+p = link_to 'Создать пользователя', new_user_path, class: "btn btn-primary"

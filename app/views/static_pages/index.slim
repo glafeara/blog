@@ -1,0 +1,23 @@
+- if flash[:success]
+  div.alert.alert-success role='alert'
+    p = flash[:success]
+
+div.jumbotron
+
+  h1 Привет, мир!
+  p
+    | Это простейший блог, написанный на фреймворке 
+    a href='http://rubyonrails.org/' Ruby on Rails
+    |. Который в свою очередь написан на языке программирования 
+    a href='https://www.ruby-lang.org' Ruby
+
+- @articles.each do |a|
+
+  h3 = a.header
+  p
+    span.label.label-info = a.category.category
+  p = raw a.description
+  p
+    =link_to 'Читать далее', article_path(a), class: "btn btn-primary btn-sm"
+    
+= will_paginate @articles, renderer: BootstrapPagination::Rails
