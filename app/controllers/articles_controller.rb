@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   before_action :premission_for_posts, only: :new
 
   def index
-  	@articles = Article.all
+    @articles = Article.all
   end
 
   def new
@@ -25,16 +25,16 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-  	set_article
+    set_article
     @categories = Category.all
   end
 
   def update
-  	set_article.update(article_params)
+    set_article.update(article_params)
     get_categories
-  	if @article.errors.empty?
+    if @article.errors.empty?
   	  redirect_to @article
-  	else
+    else
       render 'edit'
     end
   end
