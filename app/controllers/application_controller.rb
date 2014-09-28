@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
 			@all_categories = Category.all
 		end
 
+<<<<<<< HEAD
+=======
+    def get_categories
+      @all_categories = Category.all
+    end
+
+>>>>>>> 993e6f41ad2198e6cd555695103a3b3aca85aac0
 end
