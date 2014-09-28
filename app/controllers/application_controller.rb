@@ -15,5 +15,5 @@ class ApplicationController < ActionController::Base
 		def get_categories
 			@all_categories = Category.all
 		end
-
+		
 end
