@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :is_admin, only: [ :index, :destroy, :new, :edit  ]
 
   def index
-  	@categories = Category.all
+    @categories = Category.all
   end
 
   def new
@@ -12,34 +12,34 @@ class CategoriesController < ApplicationController
   end
 
   def create
-  	@category = Category.create(category_params)
-  	if @category.errors.empty?
-  	  redirect_to @category
-  	else
-  	  render 'new'
-  	end
+    @category = Category.create(category_params)
+    if @category.errors.empty?
+      redirect_to @category
+    else
+      render 'new'
+    end
   end
 
   def edit
-  	find_category
+    set_category
   end
 
   def update
-  	find_category.update(category_params)
-  	if @category.errors.empty?
-  	  redirect_to @category
-  	else
+    set_category.update(category_params)
+    if @category.errors.empty?
+      redirect_to @category
+    else
       render 'edit'
     end
   end
 
   def show
-  	find_category
+    set_category
   end
 
   def destroy
-  	find_category.destroy
-  	redirect_to categories_path
+    set_category.destroy
+    redirect_to categories_path
   end
 
 
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:category)
     end
 
-    def find_category
+    def set_category
       @category = Category.find(params[:id])
     end
 
