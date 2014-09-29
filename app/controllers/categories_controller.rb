@@ -26,11 +26,6 @@ class CategoriesController < ApplicationController
 
   def update
     set_category.update(category_params)
-    find_category
-  end
-
-  def update
-    find_category.update(category_params)
     if @category.errors.empty?
       redirect_to @category
     else
@@ -44,11 +39,6 @@ class CategoriesController < ApplicationController
 
   def destroy
     set_category.destroy
-    find_category
-  end
-
-  def destroy
-    find_category.destroy
     redirect_to categories_path
   end
 
