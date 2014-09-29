@@ -8,12 +8,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def get_categories
-    @all_categories = Category.all
-  end
-
-  def get_categories
-    @all_categories = Category.all
-  end
+    def get_categories
+      @all_categories = Category.all
+    end
  
 end

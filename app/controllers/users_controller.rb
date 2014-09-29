@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :signed
+  before_action :signed, except: :new
   before_action :is_admin, only: [:index, :destroy, :activeadmin, :checked]
   
   def index
