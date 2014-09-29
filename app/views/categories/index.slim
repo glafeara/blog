@@ -9,6 +9,7 @@ table.table
         strong
           | Категория
       th
+        strong
           | Статей
       th
 
@@ -22,8 +23,8 @@ table.table
         td = c.id
         td = c.category
         td = c.articles.count
-        td = link_to 'Показать', category_path(c)
-        td = link_to 'Править', edit_category_path(c)
-        td = link_to 'Удалить', category_path(c), method: :delete, data: { confirm: 'Are you sure?' }
+        td = link_to 'Показать', category_path(c), class: "btn btn-primary btn-xs"
+        td = link_to 'Править', edit_category_path(c), class: "btn btn-primary btn-xs"
+        td = link_to 'Удалить', category_path(c), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: 'Are you sure?' }
 br
-p = link_to 'Создать категорию', new_category_path
+p = link_to 'Создать категорию', new_category_path, class: "btn btn-primary"
