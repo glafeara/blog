@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :signed, except: :new
-  before_action :is_admin, only: [:index, :destroy, :activeadmin, :checked]
+  before_action :signed, except: [ :new, :create ]
+  before_action :is_admin, only: [ :index, :destroy, :activeadmin, :checked ]
   
   def index
     @users = User.all
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.errors.empty?
+      sign_in @user
       redirect_to @user
     else
       render 'new'
