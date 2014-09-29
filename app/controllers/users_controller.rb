@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def activeadmin
     set_user
-    if !@user.isadmin
+    unless @user.isadmin
       @user.update_attribute(:isadmin, true)
       redirect_to users_path
     else
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
   def checked
     set_user
-    if !@user.checked
+    unless @user.checked
     @user.update_attribute(:checked, true)
       redirect_to users_path
     else
