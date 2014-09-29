@@ -17,6 +17,8 @@ html
               | Категории
               span.caret
             ul.dropdown-menu role='menu'
+              - if @all_categories.empty?
+                li = link_to 'Категории отсутствуют', '#'
               - @all_categories.each do |cat|
                 li = link_to cat.category + ' (' + cat.articles.count.to_s + ')', category_path(cat)
         ul.nav.navbar-nav.navbar-right
