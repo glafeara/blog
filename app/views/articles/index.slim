@@ -7,7 +7,7 @@ table.table
           | Заголовок
       th
         strong
-          | Кратокое описание
+          | Описание
       th
         strong
           | Основной текст
@@ -18,6 +18,9 @@ table.table
         strong
           | ID пользователя
       th
+        strong
+          | Комментариев
+      th
           |
       th
           |
@@ -26,10 +29,11 @@ table.table
     tbody
       tr
         td = a.header
-        td = truncate(a.description, length: 50)
-        td = truncate(a.article, length: 150)
+        td = truncate(a.description, length: 20)
+        td = truncate(a.article, length: 80)
         td = a.category_id
         td = a.user_id
+        td = a.comments.count
         td = link_to 'Показать', article_path(a), class: "btn btn-primary btn-xs"
         td = link_to 'Править', edit_article_path(a), class: "btn btn-primary btn-xs"
         td = link_to 'Удалить', article_path(a), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: 'Are you sure?' }
