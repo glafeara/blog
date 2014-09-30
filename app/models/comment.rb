@@ -1,7 +1,5 @@
 class Comment < ActiveRecord::Base
 
-  before_create { self.user_id.to_i }
-
   belongs_to :user
   belongs_to :article
 

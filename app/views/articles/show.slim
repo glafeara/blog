@@ -9,6 +9,7 @@ div.container
   = raw @article.article
 
   br
+
   - if @comment && @comment.errors.any?
     div.alert.alert-danger role="alert"
       - @comment.errors.full_messages.each do |msg|
