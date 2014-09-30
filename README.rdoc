@@ -1,3 +1,4 @@
 == README
 
-This is a simple blog
+This is a simple blog written in Ruby on Rails a novice developer.
+Thanks Google Translate! :)
