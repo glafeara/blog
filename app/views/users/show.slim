@@ -13,6 +13,8 @@ table.table
       th
         | Кол-во статей
       th
+        | Кол-во комментариев
+      th
 
       th
     tbody
@@ -20,5 +22,6 @@ table.table
   	    td = @user.id
   	    td = @user.email
   	    td = @user.articles.count
+  	    td = @user.comments.count
   	    td = link_to 'Написать статью', new_article_path
   	    td = link_to 'Редактировать профль', edit_user_path(current_user)

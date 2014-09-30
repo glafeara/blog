@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     end
   end
   resources :categories
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
   resources :sessions, only: [ :new, :create, :destroy ]
 
   root  'static_pages#index'

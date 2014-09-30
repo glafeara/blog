@@ -1,8 +1,36 @@
 - if flash[:alert]
   div.alert.alert-danger role='alert'
     p = flash[:alert]
+
 div.container
 
- h1 = @article.header
- = raw @article.description
- = raw @article.article
+  h1 = @article.header
+  = raw @article.description
+  = raw @article.article
+
+  br
+  - if @comment && @comment.errors.any?
+    div.alert.alert-danger role="alert"
+      - @comment.errors.full_messages.each do |msg|
+        p = msg
+  - else
+    h3 Комментарии
+    - @article.comments.each do |comment|
+      div.panel.panel-default
+        div.panel-heading
+          p.panel-title = comment.user.email
+          small = comment.created_at
+        div.panel-body
+          = comment.comment
+
+  h4 Комментировать
+  = form_for :comment, url: article_comments_path(@article), html: { class: "form-horizontal", role: "form" } do |f|
+
+
+    div.form-group
+      div.col-sm-5
+        = f.text_area :comment, cols: 45, rows: 5, class: 'form-control'
+
+    div.form-group
+      div.col-sm-5
+        = f.submit 'Отправить', class: "btn btn-primary"

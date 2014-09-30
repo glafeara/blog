@@ -11,5 +11,12 @@ class ApplicationController < ActionController::Base
     def get_categories
       @all_categories = Category.all
     end
+
+  def premission_for_posts
+    unless @current_user.checked
+      flash[:alert] = 'Ваш аккаунт ещё не проверен администратором'
+      redirect_to current_user
+    end
+  end
  
 end

@@ -13,6 +13,7 @@ module SessionsHelper
 
   def signed
     if current_user.nil?
+      flash[:alert] = 'Вы не авторизированны'
       redirect_to signin_path
     end
   end

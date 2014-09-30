@@ -1,10 +1,9 @@
+- unless flash[:alert].nil?
+  p.alert.alert-danger role='alert' = flash[:alert]
+
 h1 Вход
 
 = form_for(:session, url: sessions_path, html: { class: "form-horizontal", role: "form" }) do |f|
-
-  div.col-sm-10.form-group
-    - unless flash[:alert].nil?
-      p.alert.alert-danger role='alert' = flash[:alert]
 
   div.form-group
     div.col-sm-5
