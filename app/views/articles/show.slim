@@ -14,6 +14,8 @@ div.container
     div.alert.alert-danger role="alert"
       - @comment.errors.full_messages.each do |msg|
         p = msg
+  - elsif @article.comments.empty?
+    nil
   - else
     h3 Комментарии
     - @article.comments.each do |comment|
@@ -24,7 +26,7 @@ div.container
         div.panel-body
           = comment.comment
 
-  h4 Комментировать
+  h4 Добавить комментарий
   = form_for :comment, url: article_comments_path(@article), html: { class: "form-horizontal", role: "form" } do |f|
 
 
