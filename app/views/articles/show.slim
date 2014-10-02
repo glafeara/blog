@@ -24,21 +24,21 @@ div.container
           p.panel-title = comment.user.email
           small
             = comment.created_at
-            - if !current_user.nil?
+            - if signed_in?
               - unless current_user.id != comment.user_id && !current_user.isadmin
                 = " | "
                 = link_to 'Удалить', [comment.article, comment], method: :delete, data: { confirm: 'Вы уверены?'}
         div.panel-body
           = comment.comment
+  - if signed_in?
+    h4 Добавить комментарий
+    = form_for :comment, url: article_comments_path(@article), html: { class: "form-horizontal", role: "form" } do |f|
 
-  h4 Добавить комментарий
-  = form_for :comment, url: article_comments_path(@article), html: { class: "form-horizontal", role: "form" } do |f|
 
+      div.form-group
+        div.col-sm-5
+          = f.text_area :comment, cols: 45, rows: 5, class: 'form-control'
 
-    div.form-group
-      div.col-sm-5
-        = f.text_area :comment, cols: 45, rows: 5, class: 'form-control'
-
-    div.form-group
-      div.col-sm-5
-        = f.submit 'Отправить', class: "btn btn-primary"
+      div.form-group
+        div.col-sm-5
+          = f.submit 'Отправить', class: "btn btn-primary"
