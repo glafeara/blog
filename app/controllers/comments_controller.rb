@@ -22,8 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
+    set_comment
     @comment.destroy
     redirect_to article_path(@article)
   end
@@ -45,11 +44,11 @@ class CommentsController < ApplicationController
     end
 
 
-  def this_is_his_comment
-    if @current_user.id != set_comment.user_id && !@current_user.isadmin
-      flash[:alert] = 'Вы не можете удалять чужие комментарии!'
-      redirect_to @article
+    def this_is_his_comment
+      if @current_user.id != set_comment.user_id && !@current_user.isadmin
+        flash[:alert] = 'Вы не можете удалять чужие комментарии!'
+        redirect_to @article
+      end
     end
-  end
 
 end
