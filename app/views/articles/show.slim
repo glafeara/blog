@@ -22,7 +22,11 @@ div.container
       div.panel.panel-default
         div.panel-heading
           p.panel-title = comment.user.email
-          small = comment.created_at
+          small
+            = comment.created_at
+            - unless current_user_comment?
+              = " | "
+              = link_to 'Удалить', [comment.article, comment], method: :delete, data: { confirm: 'Вы уверены?'}
         div.panel-body
           = comment.comment
 
