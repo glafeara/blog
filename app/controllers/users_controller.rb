@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :signed, except: [ :new, :create ]
-  before_action :is_admin, only: [ :index, :destroy, :activeadmin, :checked ]
+  before_action :signed,   except: [ :new, :create ]
+  before_action :is_admin, only:   [ :index, :destroy, :activeadmin, :checked ]
   
   def index
     @users = User.all
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :isadmin)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 
     def set_user
