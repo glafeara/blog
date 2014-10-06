@@ -1,16 +1,13 @@
 h1 Новая категория
 
+- if @category.errors.any?
+  div.alert.alert-danger role="alert"
+    - @category.errors.full_messages.each do |msg|
+      p = msg
+
 = form_for @category, html: { class: "form-horizontal", role: "form" } do |f|
 
-  - if @category.errors.any?
-    div.alert.alert-danger role="alert"
-      - @category.errors.full_messages.each do |msg|
-        p = msg
-        
-  div.form-group
-    div.col-sm-5
-      = f.label 'Имя категории:'
-      = f.text_field :category, class: "form-control"
+  = render partial: 'form', locals: { f: f }
 
   div.form-group 
     div.col-sm-10
