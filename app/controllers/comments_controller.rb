@@ -11,7 +11,9 @@ class CommentsController < ApplicationController
     if @comment.errors.any?
       render 'articles/show'
     else
-      redirect_to @article
+      respond_to do |format|
+        format.js { render :layout => false }
+      end
     end
   end
 

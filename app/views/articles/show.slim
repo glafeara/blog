@@ -10,30 +10,19 @@ div.container
 
   br
 
-  - if @comment && @comment.errors.any?
-    div.alert.alert-danger role="alert"
-      - @comment.errors.full_messages.each do |msg|
-        p = msg
-  - elsif @article.comments.empty?
-    nil
+  - if @article.comments.empty?
+    h3 Комментарии
+    div#comments
+      p Еще нет ни одного комментария. Будьте первым! :)
   - else
     h3 Комментарии
-    - @article.comments.each do |comment|
-      div.panel.panel-default
-        div.panel-heading
-          p.panel-title = comment.user.email
-          small
-            = comment.created_at
-            - if signed_in?
-              - unless current_user.id != comment.user_id && !current_user.isadmin
-                = " | "
-                = link_to 'Удалить', [comment.article, comment], method: :delete, data: { confirm: 'Вы уверены?'}
-        div.panel-body
-          = comment.comment
+
+    div#comments
+      = render @article.comments
 
   - if signed_in?
     h4 Добавить комментарий
-    = form_for :comment, url: article_comments_path(@article), html: { class: "form-horizontal", role: "form" } do |f|
+    = form_for :comment, url: article_comments_path(@article), remote: true,  html: { class: "form-horizontal", role: "form" } do |f|
 
       div.form-group
         div.col-sm-5
