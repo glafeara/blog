@@ -8,12 +8,8 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
-    if @comment.errors.any?
-      render 'articles/show'
-    else
-      respond_to do |format|
+    respond_to do |format|
         format.js { render :layout => false }
-      end
     end
   end
 

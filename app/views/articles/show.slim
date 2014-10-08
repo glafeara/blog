@@ -21,6 +21,7 @@ div.container
       = render @article.comments
 
   - if signed_in?
+    div#errors_validation
     h4 Добавить комментарий
     = form_for :comment, url: article_comments_path(@article), remote: true,  html: { class: "form-horizontal", role: "form" } do |f|
 

@@ -1,2 +1,7 @@
-| $("#comments").html("#{j render @article.comments}");
-| $("#comment_comment").val("");
+- if @comment.errors.empty?
+ |  $("#comments").html("#{j (render @article.comments) }");
+ |  $("#comment_comment").val("");
+- else
+ |  var toAppend = $("<div class='alert alert-danger'>#{@comment.errors.full_messages[0]}</div>");
+ |  $("#errors_validation").append(toAppend);
+ |  toAppend.fadeOut(5000);
