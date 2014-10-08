@@ -25,7 +25,9 @@ class CommentsController < ApplicationController
 
   def destroy
     set_comment.destroy
-    redirect_to article_path(@article)
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
   end
 
 

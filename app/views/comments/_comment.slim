@@ -6,6 +6,6 @@ div.panel.panel-default
       - if signed_in?
         - unless current_user.id != comment.user_id && !current_user.isadmin
           = " | "
-          = link_to 'Удалить', [comment.article, comment], method: :delete, data: { confirm: 'Вы уверены?'}
+          = link_to 'Удалить', [comment.article, comment], remote: true, method: :delete, data: { confirm: 'Вы уверены?'}
   div.panel-body
     = comment.comment
