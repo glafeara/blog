@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
 
   before_action :signed
   before_action :premission_for_posts
-  before_action :add_user_id, except: :destroy
-  before_action :this_is_his_comment, only: :destroy
+  before_action :add_user_id,          except: :destroy
+  before_action :this_is_his_comment,  only: :destroy
 
   def create
     @article = Article.find(params[:article_id])
@@ -11,12 +11,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
         format.js { render :layout => false }
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy
