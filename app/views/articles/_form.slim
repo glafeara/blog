@@ -1,19 +1,22 @@
 div.form-group
   div.col-sm-5
-    = f.label 'Заголовок'
+    = f.label 'Заголовок:'
     = f.text_field :header, class: "form-control"
 
 div.form-group
   div.col-sm-7
-    = f.label 'Краткое содержание'
+    = f.label 'Краткое содержание:'
     = f.text_area :description, class: "form-control", cols: 45, rows: 5
 
 div.form-group
   div.col-sm-7
-    = f.label 'Основной текст'
+    = f.label 'Основной текст:'
     = f.text_area :article, class: "form-control", cols: 60, rows: 5
 
 div.form-group
   div.col-sm-3
-    = f.label 'Категория'
-    = select_tag 'article[category_id]', options_for_select(@all_categories.collect { |c| [c.category, c.id] }), class: "form-control"
+    - if @all_categories.empty?
+      = link_to 'Добавить категорию', new_category_path, class: "btn btn-default btn-xs"
+    - else
+      = f.label 'Категория:'
+      = select_tag 'article[category_id]', options_for_select(@all_categories.collect { |c| [c.category, c.id] }), :prompt => '- Выбор категории -', class: "form-control"

@@ -10,6 +10,7 @@ class Article < ActiveRecord::Base
   validates     :header,      presence: true, length: { minimum: 4, maximum: 150 }
   validates     :description, presence: true, length: { minimum: 200, maximum: 500 }
   validates     :article,     presence: true, length: { minimum: 300, maximum: 20000 }
+  validates     :category_id, presence: true
   validates     :user_id, 	  presence: true
 
 
