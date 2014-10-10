@@ -11,9 +11,9 @@ table.table
       th
         | Логин
       th
-        | Кол-во статей
+        | Статей
       th
-        | Кол-во комментариев
+        | Комментариев
       th
 
       th
@@ -22,7 +22,7 @@ table.table
   	    td = @user.id
   	    td = @user.email
   	    td = @user.articles.count
-  	    td = @user.comments.count
+  	    td = @user.comments_count
   	    - unless current_user.id != @user.id
   	      td = link_to 'Написать статью', new_article_path, class: "btn btn-primary btn-xs"
   	      td = link_to 'Редактировать профль', edit_user_path(current_user), class: "btn btn-primary btn-xs"

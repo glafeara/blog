@@ -20,7 +20,7 @@ html
               - if @all_categories.empty?
                 li = link_to 'Категории отсутствуют', '#'
               - @all_categories.each do |cat|
-                li = link_to cat.category + ' (' + cat.category_count.to_s + ')', category_path(cat)
+                li = link_to cat.category + ' (' + cat.articles_count.to_s + ')', category_path(cat)
         ul.nav.navbar-nav.navbar-right
           - if signed_in?
             li = link_to current_user.email, current_user
