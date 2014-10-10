@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :signed,   except: :show
   before_action :is_admin, only: [ :index, :destroy ]
   before_action :this_is_his_article, only: :edit
-  before_action :premission_for_posts, only: :new
+  before_action :permission_for_posts, only: :new
 
   def index
     @articles = Article.all
@@ -62,13 +62,6 @@ class ArticlesController < ApplicationController
       if @current_user.id != set_article.user_id && !@current_user.isadmin
         flash[:alert] = 'Вы не можете редактировать чужие статьи!'
         redirect_to set_article
-      end
-    end
-
-    def premission_for_posts
-      unless @current_user.checked
-        flash[:alert] = 'Ваш аккаунт ещё не проверен администратором'
-        redirect_to current_user
       end
     end
 

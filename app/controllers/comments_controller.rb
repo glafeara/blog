@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :signed
-  before_action :premission_for_posts
+  before_action :permission_for_posts
   before_action :add_user_id,          except: :destroy
   before_action :this_is_his_comment,  only: :destroy
 

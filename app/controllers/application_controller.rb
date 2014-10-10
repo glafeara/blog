@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       @all_categories = Category.all
     end
 
-  def premission_for_posts
+  def permission_for_posts
     unless @current_user.checked
       flash[:alert] = 'Ваш аккаунт ещё не проверен администратором'
       redirect_to current_user
