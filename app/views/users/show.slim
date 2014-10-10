@@ -1,7 +1,12 @@
-h1 Профиль
 - if flash[:alert]
   div.alert.alert-danger role='alert'
     p = flash[:alert]
+
+- if flash[:success]
+  div.alert.alert-success role='alert'
+    p = flash[:success]
+
+h1 Профиль
 
 table.table
   thaed

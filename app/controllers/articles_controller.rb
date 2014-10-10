@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
 
-  before_action :signed,   except: :show
-  before_action :is_admin, only: [ :index, :destroy ]
-  before_action :this_is_his_article, only: :edit
+  before_action :signed,               except: :show
+  before_action :is_admin,             only: [ :index, :destroy ]
+  before_action :this_is_his_article,  only: :edit
   before_action :permission_for_posts, only: :new
 
   def index
