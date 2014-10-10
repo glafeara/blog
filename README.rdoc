@@ -2,3 +2,11 @@
 
 This is a simple blog written in Ruby on Rails a novice developer.
 Thanks Google Translate! :)
+
+Features:
+*authentication (form RailsTutorial);
+*adding categories;
+*posting articles;
+*commenting (adding and removing comments on Ajax).
+For testing, it is desirable to create a user through the console:
+<tt>user = User.create(email: "user@example.com", password: "123123", password_confirmation: "123123", isadmin: true, checked: true)</tt>
