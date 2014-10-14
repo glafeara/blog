@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010103115) do
+ActiveRecord::Schema.define(version: 20141014103807) do
 
   create_table "articles", force: true do |t|
     t.string   "header"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20141010103115) do
     t.string   "remember_token"
     t.boolean  "checked",         default: false
     t.integer  "comments_count",  default: 0
+    t.integer  "articles_count",  default: 0
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"

@@ -17,11 +17,11 @@ class Article < ActiveRecord::Base
   private
 
     def increment_articles_count
-      category.increment!(:articles_count)
+      category.increment!(:articles_count) && user.increment!(:articles_count)
     end
 
     def decrement_articles_count
-      category.decrement!(:articles_count)
+      category.decrement!(:articles_count) && user.decrement!(:articles_count)
     end
 
 end
