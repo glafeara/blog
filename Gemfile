@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'slim'
 
+gem "chartkick"
+
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'bootstrap-material-design', '~> 0.0.2'
