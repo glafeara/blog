@@ -25,6 +25,8 @@ gem 'tinymce-rails'
 
 gem 'carrierwave'
 
+gem 'gravatar-ultimate'
+
 gem 'will_paginate-bootstrap'
 
 gem 'autoprefixer-rails'

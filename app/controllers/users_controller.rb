@@ -36,6 +36,9 @@ class UsersController < ApplicationController
 
   def show
     set_user
+    @user_articles = Article.where(user_id: set_user.id).map
+    @user_comments = Comment.where(user_id: set_user.id).map
+    @gravatar = Gravatar.new(set_user.email.downcase).image_url
   end
 
   def destroy
