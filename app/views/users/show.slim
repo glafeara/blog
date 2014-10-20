@@ -16,16 +16,21 @@ div.panel.panel-info
     h2.panel-title
      | Ваши статьи
   table.table
-    - @user_articles.each do |article|
+    - if @user_articles.count < 1
       tr
         td
-          = link_to article.header, article_path(article)
-        td
-          = article.created_at
-        td
-          = link_to 'Редактировать', edit_article_path(article), class: 'btn btn-primary btn-xs'
-        td
-          = link_to 'Удалить', article_path(article), class: 'btn btn-primary btn-xs', method: :delete, data: { confirm: 'Are you sure' }
+          | Упс... У вас нет ни одной статьи.
+    - else
+      - @user_articles.each do |article|
+        tr
+          td
+            = link_to article.header, article_path(article)
+          td
+            = article.created_at
+          td
+            = link_to 'Редактировать', edit_article_path(article), class: 'btn btn-primary btn-xs'
+          td
+            = link_to 'Удалить', article_path(article), class: 'btn btn-primary btn-xs', method: :delete, data: { confirm: 'Are you sure' }
 
 
 div.panel.panel-info
@@ -33,12 +38,17 @@ div.panel.panel-info
     h2.panel-title
      | Ваши комментарии
   table.table
-    - @user_comments.each do |comment|
+    - if @user_comments.count < 1
       tr
         td
-          strong  = "\"" + "#{comment.comment}" + "\""
-        td
-          = comment.created_at
-        td
-          = " к статье "
-          = link_to comment.article.header, article_path(comment.article)
+          | Упс... У вас нет ни одного комментария.
+    - else
+      - @user_comments.each do |comment|
+        tr
+          td
+            strong  = "\"" + "#{comment.comment}" + "\""
+          td
+            = comment.created_at
+          td
+            = " к статье "
+            = link_to comment.article.header, article_path(comment.article)
